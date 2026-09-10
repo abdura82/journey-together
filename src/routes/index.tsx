@@ -641,6 +641,10 @@ function Index() {
                     <DropdownMenuItem onSelect={() => setGruplarAcik(true)}>
                       Gruplar oluştur
                     </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={() => setAyarlarAcik(true)}>
+                      <Settings className="mr-2 h-4 w-4" />
+                      {tr("ayarlar")}
+                    </DropdownMenuItem>
                   </>
                 )}
               </DropdownMenuContent>
@@ -723,13 +727,6 @@ function Index() {
                   <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                     {tr("duzenlemeModu")}
                   </span>
-              <Button
-                     size="sm"
-                     variant="ghost"
-                     onClick={() => setAyarlarAcik(true)}
-                   >
-                     <Settings className="h-4 w-4" /> {tr("ayarlar")}
-                   </Button>
                   <Button size="sm" variant="outline" onClick={cikisYap}>
                     <LogOut className="h-4 w-4" /> {tr("cikisYap")}
                   </Button>
