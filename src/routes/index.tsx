@@ -896,7 +896,7 @@ function Index() {
                     <TableCell className="px-0.5 py-2 text-center text-[10px] tabular-nums sm:px-4 sm:py-3 sm:text-sm">
                       <SayfaEditor
                         talebe={t}
-                        duzenlenebilir={hocaModu}
+                        duzenlenebilir={false}
                         onKaydet={(yeni) => guncelle(t.id, { sayfa: yeni })}
                       />
                     </TableCell>
@@ -1306,10 +1306,24 @@ function ProfilDiyalog({
     <Dialog open={!!talebe} onOpenChange={(o) => !o && onClose()}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>{t("talebeProfili")}</DialogTitle>
-          <DialogDescription>
-            {t("fotoVeKisisel")}
-          </DialogDescription>
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <DialogTitle>{t("talebeProfili")}</DialogTitle>
+              <DialogDescription>
+                {t("fotoVeKisisel")}
+              </DialogDescription>
+            </div>
+            {hocaModu && (
+              <Button
+                size="sm"
+                variant="outline"
+                className="shrink-0"
+                onClick={() => onDuzenle(talebe)}
+              >
+                <Pencil className="h-4 w-4" /> Düzenleme
+              </Button>
+            )}
+          </div>
         </DialogHeader>
 
         <div className="flex flex-col items-center gap-3">
