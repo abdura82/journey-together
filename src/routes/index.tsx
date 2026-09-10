@@ -1039,6 +1039,37 @@ function Index() {
         </DialogContent>
       </Dialog>
 
+      <Dialog open={ayarlarAcik} onOpenChange={setAyarlarAcik}>
+        <DialogContent className="sm:max-w-sm">
+          <DialogHeader>
+            <DialogTitle>{tr("ayarlar")}</DialogTitle>
+            <DialogDescription>{tr("ayarlarAciklama")}</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-2">
+            <button
+              type="button"
+              className="flex w-full items-center gap-3 rounded-md border border-border/60 px-3 py-2 text-left transition-colors hover:bg-accent"
+              onClick={() => {
+                setAyarlarAcik(false);
+                setEskiParola("");
+                setYeniParola("");
+                setYeniParolaTekrar("");
+                setParolaDegistirHata(null);
+                setParolaDegistirAcik(true);
+              }}
+            >
+              <Lock className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm font-medium">{tr("parolaDegistir")}</span>
+            </button>
+          </div>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setAyarlarAcik(false)}>
+              {tr("kapat")}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <Dialog
         open={parolaDegistirAcik}
         onOpenChange={(o) => {
