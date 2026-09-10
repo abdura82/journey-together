@@ -752,13 +752,6 @@ function Index() {
               }}
               grupFiltre={grupFiltre}
             />
-            {hocaModu && (
-              <div className="mt-4 flex justify-end">
-                <Button size="sm" onClick={() => ekle(true)}>
-                  <Plus className="h-4 w-4" /> Aidata talebe ekle
-                </Button>
-              </div>
-            )}
           </>
         ) : (
 
