@@ -59,6 +59,8 @@ import {
   Eye,
   EyeOff,
   Settings,
+  Wallet,
+  Users,
 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -638,9 +640,6 @@ function Index() {
                   <>
                     <DropdownMenuSeparator />
                     <DropdownMenuLabel>Yönetim</DropdownMenuLabel>
-                    <DropdownMenuItem onSelect={() => setGruplarAcik(true)}>
-                      Gruplar oluştur
-                    </DropdownMenuItem>
                     <DropdownMenuItem onSelect={() => setAyarlarAcik(true)}>
                       <Settings className="mr-2 h-4 w-4" />
                       {tr("ayarlar")}
@@ -755,13 +754,6 @@ function Index() {
               }}
               grupFiltre={grupFiltre}
             />
-            {hocaModu && (
-              <div className="mt-4 flex justify-end">
-                <Button size="sm" onClick={() => ekle(true)}>
-                  <Plus className="h-4 w-4" /> Aidata talebe ekle
-                </Button>
-              </div>
-            )}
           </>
         ) : (
 
@@ -954,14 +946,6 @@ function Index() {
               </TableBody>
             </Table>
         </Card>
-
-        {hocaModu && (
-          <div className="mt-4 flex justify-end">
-            <Button size="sm" onClick={() => ekle(false)}>
-              <Plus className="h-4 w-4" /> {tr("talebeEkle")}
-            </Button>
-          </div>
-        )}
         </>
         )}
       </div>
@@ -1058,6 +1042,43 @@ function Index() {
               <Lock className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm font-medium">{tr("parolaDegistir")}</span>
             </button>
+            {hocaModu && (
+              <>
+                <button
+                  type="button"
+                  className="flex w-full items-center gap-3 rounded-md border border-border/60 px-3 py-2 text-left transition-colors hover:bg-accent"
+                  onClick={() => {
+                    setAyarlarAcik(false);
+                    ekle(false);
+                  }}
+                >
+                  <Plus className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium">{tr("talebeEkle")}</span>
+                </button>
+                <button
+                  type="button"
+                  className="flex w-full items-center gap-3 rounded-md border border-border/60 px-3 py-2 text-left transition-colors hover:bg-accent"
+                  onClick={() => {
+                    setAyarlarAcik(false);
+                    ekle(true);
+                  }}
+                >
+                  <Wallet className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium">Aidata talebe ekle</span>
+                </button>
+                <button
+                  type="button"
+                  className="flex w-full items-center gap-3 rounded-md border border-border/60 px-3 py-2 text-left transition-colors hover:bg-accent"
+                  onClick={() => {
+                    setAyarlarAcik(false);
+                    setGruplarAcik(true);
+                  }}
+                >
+                  <Users className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium">Gruplar oluştur</span>
+                </button>
+              </>
+            )}
           </div>
           <DialogFooter>
             <Button variant="ghost" onClick={() => setAyarlarAcik(false)}>
