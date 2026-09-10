@@ -58,6 +58,7 @@ import {
   User as UserIcon,
   Eye,
   EyeOff,
+  Settings,
 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -111,6 +112,8 @@ const SOZLUK = {
     cikisYap: "Çıkış",
     duzenleme: "Düzenleme modu",
     parola: "Parola",
+    ayarlar: "Ayarlar",
+    ayarlarAciklama: "Uygulama ayarlarını buradan yönetebilirsiniz.",
     parolaDegistir: "Parola Değiştir",
     yeniParolaBelirle: "Yeni parolanızı belirleyin.",
     mevcutParolaLbl: "Mevcut parola",
@@ -365,6 +368,7 @@ function Index() {
   const [seciliGun, setSeciliGun] = useState<number>(() => bugununGunu());
   const seciliDers: Ders = "kuran";
 
+  const [ayarlarAcik, setAyarlarAcik] = useState(false);
   const [parolaDegistirAcik, setParolaDegistirAcik] = useState(false);
   const [eskiParola, setEskiParola] = useState("");
   const [yeniParola, setYeniParola] = useState("");
@@ -720,18 +724,12 @@ function Index() {
                     {tr("duzenlemeModu")}
                   </span>
               <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => {
-                      setEskiParola("");
-                      setYeniParola("");
-                      setYeniParolaTekrar("");
-                      setParolaDegistirHata(null);
-                      setParolaDegistirAcik(true);
-                    }}
-                  >
-                    {tr("parola")}
-                  </Button>
+                     size="sm"
+                     variant="ghost"
+                     onClick={() => setAyarlarAcik(true)}
+                   >
+                     <Settings className="h-4 w-4" /> {tr("ayarlar")}
+                   </Button>
                   <Button size="sm" variant="outline" onClick={cikisYap}>
                     <LogOut className="h-4 w-4" /> {tr("cikisYap")}
                   </Button>
@@ -1037,6 +1035,37 @@ function Index() {
               {tr("iptal")}
             </Button>
             <Button onClick={girisYap}>{tr("girisYap")}</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={ayarlarAcik} onOpenChange={setAyarlarAcik}>
+        <DialogContent className="sm:max-w-sm">
+          <DialogHeader>
+            <DialogTitle>{tr("ayarlar")}</DialogTitle>
+            <DialogDescription>{tr("ayarlarAciklama")}</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-2">
+            <button
+              type="button"
+              className="flex w-full items-center gap-3 rounded-md border border-border/60 px-3 py-2 text-left transition-colors hover:bg-accent"
+              onClick={() => {
+                setAyarlarAcik(false);
+                setEskiParola("");
+                setYeniParola("");
+                setYeniParolaTekrar("");
+                setParolaDegistirHata(null);
+                setParolaDegistirAcik(true);
+              }}
+            >
+              <Lock className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm font-medium">{tr("parolaDegistir")}</span>
+            </button>
+          </div>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setAyarlarAcik(false)}>
+              {tr("kapat")}
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
