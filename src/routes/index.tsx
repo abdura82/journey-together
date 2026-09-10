@@ -58,6 +58,7 @@ import {
   User as UserIcon,
   Eye,
   EyeOff,
+  Settings,
 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -111,6 +112,8 @@ const SOZLUK = {
     cikisYap: "Çıkış",
     duzenleme: "Düzenleme modu",
     parola: "Parola",
+    ayarlar: "Ayarlar",
+    ayarlarAciklama: "Uygulama ayarlarını buradan yönetebilirsiniz.",
     parolaDegistir: "Parola Değiştir",
     yeniParolaBelirle: "Yeni parolanızı belirleyin.",
     mevcutParolaLbl: "Mevcut parola",
