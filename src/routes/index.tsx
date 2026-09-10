@@ -641,6 +641,10 @@ function Index() {
                     <DropdownMenuItem onSelect={() => setGruplarAcik(true)}>
                       Gruplar oluştur
                     </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={() => setAyarlarAcik(true)}>
+                      <Settings className="mr-2 h-4 w-4" />
+                      {tr("ayarlar")}
+                    </DropdownMenuItem>
                   </>
                 )}
               </DropdownMenuContent>
