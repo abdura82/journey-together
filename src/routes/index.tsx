@@ -368,6 +368,7 @@ function Index() {
   const [seciliGun, setSeciliGun] = useState<number>(() => bugununGunu());
   const seciliDers: Ders = "kuran";
 
+  const [ayarlarAcik, setAyarlarAcik] = useState(false);
   const [parolaDegistirAcik, setParolaDegistirAcik] = useState(false);
   const [eskiParola, setEskiParola] = useState("");
   const [yeniParola, setYeniParola] = useState("");
@@ -723,18 +724,12 @@ function Index() {
                     {tr("duzenlemeModu")}
                   </span>
               <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => {
-                      setEskiParola("");
-                      setYeniParola("");
-                      setYeniParolaTekrar("");
-                      setParolaDegistirHata(null);
-                      setParolaDegistirAcik(true);
-                    }}
-                  >
-                    {tr("parola")}
-                  </Button>
+                     size="sm"
+                     variant="ghost"
+                     onClick={() => setAyarlarAcik(true)}
+                   >
+                     <Settings className="h-4 w-4" /> {tr("ayarlar")}
+                   </Button>
                   <Button size="sm" variant="outline" onClick={cikisYap}>
                     <LogOut className="h-4 w-4" /> {tr("cikisYap")}
                   </Button>
