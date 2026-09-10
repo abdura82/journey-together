@@ -59,6 +59,8 @@ import {
   Eye,
   EyeOff,
   Settings,
+  Wallet,
+  Users,
 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
